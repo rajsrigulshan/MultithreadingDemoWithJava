@@ -1,4 +1,4 @@
-package multithreading;
+package multithreading.thread_creation;
 
 public class World implements Runnable {
 
