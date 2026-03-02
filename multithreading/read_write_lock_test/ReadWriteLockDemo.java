@@ -3,22 +3,14 @@ package multithreading.read_write_lock_test;
 public class ReadWriteLockDemo {
     public static void main(String[] args) {
         ReadWriteCounter counterObj=new ReadWriteCounter();
-        Runnable writeTask=new Runnable() {
-            @Override
-            public void run(){
+        Runnable writeTask=()-> {
                 for(int i=0;i<10;i++){
                     counterObj.increaseCounter();
                 }
-            }
         };
 
-        Runnable readTask=new Runnable() {
-            @Override
-            public void run(){
-                for(int i=0;i<10;i++){
-                    counterObj.getCounter();
-                }
-            }
+        Runnable readTask=()-> {
+            for(int i=0;i<10;i++) counterObj.getCounter();
         };
 
         Thread t1=new Thread(writeTask,"writer_thread_1");

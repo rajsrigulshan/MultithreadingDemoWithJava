@@ -5,12 +5,8 @@ public class Test {
 
         BankAccount myAccount=new BankAccount();
 
-        Runnable task= new Runnable() {
-            @Override
-            public void run(){
-                myAccount.withdraw(50);
-            }
-        };
+        Runnable task= () -> myAccount.withdraw(50);
+        
         Thread t1=new Thread(task,"Thread-1");
         Thread t2=new Thread(task,"Thread-2");
         Thread t3=new Thread(task,"Thread-3");
