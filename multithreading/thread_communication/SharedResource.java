@@ -16,10 +16,11 @@ public class SharedResource {
         this.data=value;
         this.hasData=true;
         System.out.println("Data produced: "+value);
-        notify();
+        notifyAll();
 
 
     }
+    Object lock =new Object();
 
     public synchronized int consume() {
         while(!hasData){
@@ -32,7 +33,7 @@ public class SharedResource {
         }
         hasData=false;
         System.out.println("Data consumed: "+data);
-        notify();
+        notifyAll();
         return data;
     }
 }
