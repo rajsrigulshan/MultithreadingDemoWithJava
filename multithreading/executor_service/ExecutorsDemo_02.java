@@ -35,13 +35,12 @@ public class ExecutorsDemo_02 {
                 // But it does not terminate executor it only controls how long the calling
                 // thread waits.
                 executor.awaitTermination(15, TimeUnit.SECONDS);
-                System.out.println("Process Terminated");
             } catch (InterruptedException e) {
                 executor.shutdown();
                 e.printStackTrace();
                 Thread.currentThread().interrupt();
             }
-            
+            System.out.println("Process Terminated");
         }
         System.out.println("Total time taken to execute:" + (System.currentTimeMillis() - startTime));
     }
