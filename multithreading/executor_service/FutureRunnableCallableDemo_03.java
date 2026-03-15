@@ -1,6 +1,7 @@
 package multithreading.executor_service;
 
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -45,9 +46,16 @@ public class FutureRunnableCallableDemo_03 {
 
 
 
+                
+                CompletableFuture<Void> thenAccept = CompletableFuture.supplyAsync(()->10).thenApply(x->x*2).thenAccept(System.out::println);
+                System.out.println(thenAccept.get());
+
+                CompletableFuture<Integer> thenApply = CompletableFuture.supplyAsync(()->10).thenApply(x->x*2);
+                System.out.println(thenApply.get());
+
                 executor.shutdown();
 
-                System.out.println("Executor Shutdown initated...");    
+                System.out.println("Executor Shutdown initated...");   
 
             }
 
