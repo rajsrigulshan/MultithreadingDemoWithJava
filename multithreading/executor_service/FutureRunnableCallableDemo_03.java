@@ -46,11 +46,16 @@ public class FutureRunnableCallableDemo_03 {
 
 
 
+                //  CompletabeFuture Supports Async programming enables non-blocking, event-driven async pipelines.
+                // Combines Future + functional programming(labmda chaining)
                 
+                //  consume result, no return 
                 CompletableFuture<Void> thenAccept = CompletableFuture.supplyAsync(()->10).thenApply(x->x*2).thenAccept(System.out::println);
                 System.out.println(thenAccept.get());
 
                 CompletableFuture<Integer> thenApply = CompletableFuture.supplyAsync(()->10).thenApply(x->x*2);
+                // Applying get for demo....
+                // Avoid get() uness necessary as it kills async benifit.
                 System.out.println(thenApply.get());
 
                 executor.shutdown();
